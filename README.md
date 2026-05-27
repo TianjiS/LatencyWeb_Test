@@ -11,6 +11,8 @@ The app intentionally avoids heavy UI work, charts, client-side aggregation, and
 
 ## Setup
 
+### Windows (PowerShell)
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -18,16 +20,36 @@ python -m pip install -r backend\requirements.txt
 Copy-Item .env.example backend\.env
 ```
 
-Edit `backend\.env` and set `TRTC_SDK_SECRET_KEY`.
+### macOS / Linux (Terminal)
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r backend/requirements.txt
+cp .env.example backend/.env
+```
+
+Edit `backend/.env` and set `TRTC_SDK_SECRET_KEY`.
 
 ## Run
+
+### Windows (PowerShell)
 
 ```powershell
 cd backend
 python -m uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
+### macOS / Linux (Terminal)
+
+```bash
+cd backend
+python3 -m uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
 Open `http://localhost:8000`.
+
+> **Note (macOS / Linux):** You must access the page via `http://localhost:8000` (or `127.0.0.1`). Accessing via IP address (e.g. `http://192.168.x.x:8000`) will cause `navigator.mediaDevices.getUserMedia` to be unavailable, because browsers only expose camera/mic APIs in secure contexts (HTTPS or localhost).
 
 ## Test Flow
 

@@ -32,6 +32,13 @@
     }, 60000);
 
     setStatus('Opening camera...');
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      throw new Error(
+        'Camera access (getUserMedia) is not available. ' +
+        'Make sure you are accessing the page via https:// or http://localhost (not IP address), ' +
+        'and that your browser supports navigator.mediaDevices.'
+      );
+    }
     const cameraStream = await navigator.mediaDevices.getUserMedia({
       audio: false,
       video: {
