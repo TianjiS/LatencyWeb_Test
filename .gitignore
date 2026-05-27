@@ -1,0 +1,11 @@
+.codex/
+.env
+backend/.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+data/sessions/
+data/sessions.json
+data/*.csv
+frontend/vendor/
